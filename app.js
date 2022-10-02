@@ -13,13 +13,17 @@ const {app, BrowserWindow} = require('electron')
         }
       })
 
-      mainWindow.loadURL(
-        url.format({
-          pathname: path.join(__dirname, `/dist/electron-app/index.html`),
-          protocol: "file:",
-          slashes: true
-        })
-      );
+      
+      const localUrl =  url.format({
+        pathname: path.join(__dirname, `/dist/electron-app/index.html`),
+        protocol: "file:",
+        slashes: true
+      });
+
+
+      console.log("print localUrl = "+localUrl);
+
+      mainWindow.loadURL(localUrl);
       // Open the DevTools.
       mainWindow.webContents.openDevTools()
 
