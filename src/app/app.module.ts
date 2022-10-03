@@ -4,6 +4,7 @@ import { NgxElectronModule } from 'ngx-electron';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TestScenarioService } from './test-scenario.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     NgxElectronModule
   ],
-  providers: [],
+  providers: [TestScenarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
