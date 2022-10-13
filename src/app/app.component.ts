@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
-import { TestScenarioService } from './test-scenario.service';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +12,12 @@ export class AppComponent {
   title = 'electron-app';
 
   public loadAllTestScenario() {
-    console.log("button clicked:");
+    console.log("ping");
     //Send request to main process;
-    this._electronService.ipcRenderer.send('get-test-scenario',["/Volumes/Personal/Projects/test cucumber",".feature"]);
-    
+    this._electronService.ipcRenderer.send('ping',[]);
+    //console.log(reply);
     //receive response from main process;
-    this._electronService.ipcRenderer.on("set-test-scenario",function (event: any, args: any) {
-      console.log("set-test-scenario");
+    this._electronService.ipcRenderer.once("pong",function (event: any, args: any) {
       console.log(args);
     });
   }

@@ -50,15 +50,11 @@ const shell = electron.shell
       if (mainWindow === null) createWindow()
     });
 
-    ipcMain.on('get-test-scenario', function (event, args) {
-      console.log("args");
-      console.log(args);
-      args.push("job done..");
-      console.log('get-test-scenario has been called');
-      event.sender.send('set-test-scenario', args)
-
-      var files = getFiles(path.join(__dirname, `/dist/electron-app/`),"html")
-      console.log(files);
+    ipcMain.on('ping', function (event, args) {
+       args.push(new Date());
+       args.push("pong");
+      // event.returnValue = args;
+      event.reply("pong",args);
     });
 
     function getFiles(dir,files_, type){
